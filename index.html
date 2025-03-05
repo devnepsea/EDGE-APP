@@ -61,7 +61,7 @@
             font-size: 16px;
         }
 
-        .login-btn {
+        button{
             background: rgba(255, 0, 0, 0.7);
             color: white;
             font-size: 16px;
@@ -90,27 +90,29 @@
 
     <div class="login-container">
         <h2>Doctor's Dashboard Login</h2>
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button class="login-btn" onclick="validateLogin()">Login</button>
+        <input type="text" id="username" placeholder="Enter Username">
+<input type="password" id="password" placeholder="Enter Password">
+<button onclick="login()">Login</button>
+
     </div>
 
     <div class="developer-info">
-        Developed by <strong>Joy Mueni</strong>, a student at MKU studying DIT. <br>
+     <strong></strong> <br>
     </div>
 
     <script>
-        function validateLogin() {
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("password").value;
+  function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      
+      if (username === "admin" && password === "password") {
+          window.location.href = "dashboard.html"; // Redirect to dashboard.html
+      } else {
+          alert("Invalid login. Try again!");
+      }
+  }
+</script>
 
-            if (username === "admin" && password === "password") {
-                window.location.href = "C:/Users/Administrator/Desktop/agah khan/dashboard.html";  // Redirect to dashboard
-            } else {
-                alert("Incorrect username or password! Please try again.");
-            }
-        }
-    </script>
 
 </body>
 </html>

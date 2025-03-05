@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aga Khan Hospital Cloud System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1e1e2f;
+            color: white;
+            text-align: center;
+        }
+        .header {
+            background: linear-gradient(90deg, #6a0572, #c2185b);
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .chart-box {
+            width: 45%;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        .health-data {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin: 10px auto;
+            width: 80%;
+            border-radius: 10px;
+        }
+        .dark-mode {
+            background: #121212;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Aga Khan Hospital Cloud System</div>
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div class="health-data" id="health-info">Loading health data...</div>
+    
+    <div class="container">
+        <div class="chart-container">
+            <div class="chart-box">
+                <canvas id="chart1"></canvas>
+            </div>
+            <div class="chart-box">
+                <canvas id="chart2"></canvas>
+            </div>
+            <div class="chart-box">
+                <canvas id="chart3"></canvas>
+            </div>
+            <div class="chart-box">
+                <canvas id="chart4"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function getRandomData() {
+            return Math.floor(Math.random() * 100);
+        }
+
+        function updateHealthData() {
+            document.getElementById("health-info").innerText = "Heart Rate: " + getRandomData() + " BPM | Blood Pressure: " + getRandomData() + "/" + getRandomData() + " mmHg | Oxygen Level: " + getRandomData() + "%";
+        }
+
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        const ctx3 = document.getElementById('chart3').getContext('2d');
+        const ctx4 = document.getElementById('chart4').getContext('2d');
+
+        const chart1 = new Chart(ctx1, { type: 'line', data: { labels: ['1', '2', '3', '4', '5'], datasets: [{ label: 'Heart Rate', data: [getRandomData(), getRandomData(), getRandomData(), getRandomData(), getRandomData()], borderColor: 'red' }] }});
+        const chart2 = new Chart(ctx2, { type: 'bar', data: { labels: ['1', '2', '3', '4', '5'], datasets: [{ label: 'Blood Pressure', data: [getRandomData(), getRandomData(), getRandomData(), getRandomData(), getRandomData()], backgroundColor: 'purple' }] }});
+        const chart3 = new Chart(ctx3, { type: 'pie', data: { labels: ['Normal', 'Elevated', 'High'], datasets: [{ label: 'Oxygen Levels', data: [getRandomData(), getRandomData(), getRandomData()], backgroundColor: ['red', 'purple', 'blue'] }] }});
+        const chart4 = new Chart(ctx4, { type: 'radar', data: { labels: ['HR', 'BP', 'O2'], datasets: [{ label: 'Vitals', data: [getRandomData(), getRandomData(), getRandomData()], borderColor: 'red', backgroundColor: 'rgba(255, 0, 0, 0.2)' }] }});
+        
+        setInterval(() => {
+            updateHealthData();
+            chart1.data.datasets[0].data = [getRandomData(), getRandomData(), getRandomData(), getRandomData(), getRandomData()];
+            chart2.data.datasets[0].data = [getRandomData(), getRandomData(), getRandomData(), getRandomData(), getRandomData()];
+            chart3.data.datasets[0].data = [getRandomData(), getRandomData(), getRandomData()];
+            chart4.data.datasets[0].data = [getRandomData(), getRandomData(), getRandomData()];
+            chart1.update();
+            chart2.update();
+            chart3.update();
+            chart4.update();
+        }, 3000);
+    </script>
+</body>
+</html>

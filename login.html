@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aga Khan Hospital Cloud System - Login</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('https://source.unsplash.com/1600x900/?hospital,technology') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            background: rgba(44, 170, 253, 0.822);
+            color: rgb(255, 62, 4);
+        }
+
+        /* Login Card */
+        .login-container {
+            background: rgba(197, 43, 128, 0.521);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 320px;
+            box-shadow: 0 4px 10px rgba(233, 65, 233, 0.918);
+
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-btn {
+            background: rgba(255, 0, 0, 0.7);
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: rgba(255, 0, 0, 1);
+        }
+
+        .developer-info {
+            margin-top: 20px;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Aga Khan Hospital Cloud System</div>
+
+    <div class="login-container">
+        <h2>Doctor's Dashboard Login</h2>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button class="login-btn" onclick="validateLogin()">Login</button>
+    </div>
+
+    <div class="developer-info">
+        Developed by <strong>Joy Mueni</strong>, a student at MKU studying DIT. <br> Coding is her passion.
+    </div>
+
+    <script>
+        function validateLogin() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "password") {
+                window.location.href = "C:/Users/Administrator/Desktop/agah khan/frontend.html";  // Redirect to dashboard
+            } else {
+                alert("Incorrect username or password! Please try again.");
+            }
+        }
+    </script>
+
+</body>
+</html>
